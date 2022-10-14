@@ -1,0 +1,6 @@
+div.todo-app{
+    flex-direction: column-reverse;
+    margin: auto;
+    display: flex;
+    align-items: center;
+}
