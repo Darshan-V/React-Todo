@@ -4,9 +4,10 @@ import Todo from "./Todo";
 
 function TodoList() {
   const [todos, setTodos] = useState([]);
+  console.log(todos);
+
   const addTodo = (todo) => {
     if (!todo.text || /^\s*$/.test(todo.text)) {
-      console.log(todo);
       return;
     }
 

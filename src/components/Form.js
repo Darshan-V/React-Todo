@@ -14,6 +14,8 @@ function TodoForm(props) {
       id: Math.floor(Math.random() * 10000),
       text: input,
       status: false,
+      duedate: Date.now(),
+      priority: "none",
     });
     setInput("");
   };
