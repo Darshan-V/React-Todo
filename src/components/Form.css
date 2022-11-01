@@ -1,5 +1,12 @@
 .todo-form{
-    width: 600px;
+    display: flex;
+    width:600px;
+    flex-grow: 0;
+    border-style: groove;
+    padding: 3px;
+    border-radius: 5px;
+    margin-top: 15px;
+    background-color: rgb(252, 245, 201);
 }
 .todo-input{
     width: 100%;

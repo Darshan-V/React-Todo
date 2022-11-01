@@ -1,6 +1,13 @@
+body{
+    align-items: center;
+    background-color: #091921;
+    min-height: 100vh;
+}
 div.todo-app{
     flex-direction: column-reverse;
     margin: auto;
     display: flex;
     align-items: center;
+    background-color: #091921;
 }
+

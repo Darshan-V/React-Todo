@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import TodoForm from "./Form";
 import Todo from "./Todo";
+import Clock from "./clock";
 
 function TodoList() {
   const [todos, setTodos] = useState([]);
@@ -17,8 +18,8 @@ function TodoList() {
   };
 
   const removeTodo = (id) => {
+    console.log(id);
     const removedArr = [...todos].filter((todo) => todo.id !== id);
-
     setTodos(removedArr);
   };
 
@@ -27,6 +28,7 @@ function TodoList() {
       if (todo.id === id) {
         todo.status = !todo.status;
       }
+      console.log(todo);
       return todo;
     });
     setTodos(updatedTodos);

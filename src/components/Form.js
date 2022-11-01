@@ -1,37 +1,29 @@
 import React, { useState } from "react";
 import "./Form.css";
+import { v4 as uuidv4 } from "uuid";
 
 function TodoForm(props) {
-  const [input, setInput] = useState("");
-  const handleChange = (e) => {
-    setInput(e.target.value);
-  };
+  const [value, setValue] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
     props.onSubmit({
-      id: Math.floor(Math.random() * 10000),
-      text: input,
-      status: false,
-      duedate: Date.now(),
-      priority: "none",
+      id: uuidv4(),
+      text: value,
     });
-    setInput("");
+    setValue("");
   };
-
   return (
     <div>
       <form onSubmit={handleSubmit} className="todo-form">
-        <>
-          <input
-            placeholder="Add a todo"
-            value={input}
-            onChange={handleChange}
-            name="text"
-            className="todo-input"
-          />
-        </>
+        <input
+          type="text"
+          className="todo-input"
+          value={value}
+          onChange={(e) => setValue(e.target.value)}
+          placeholder="Add new todo"
+        />
       </form>
     </div>
   );
