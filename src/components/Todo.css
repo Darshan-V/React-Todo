@@ -1,9 +1,16 @@
+.task{
+    border-bottom: 10px;
+    border-style: groove;
+    border-radius: 5px;
+
+}
 .primary-content{
     display: flex;
     flex-direction: row;
     width:600px;
+    font-size: 1.5em;
     flex-grow: 0;
-    justify-content: space-between;
+    justify-content: flex-start;
     border-bottom: groove #2d5f78;;
     padding: 3px;
     border-radius: 5px;
@@ -17,11 +24,23 @@
     justify-content: space-between;
     padding: 3px;
     border-radius: 5px;
-    background-color:  #2d5f78;
+    background-color:  #477f9c;
 }
-.task{
-    border-bottom: 10px;
-    border-style: groove;
-    border-radius: 5px;
 
+.todo-notes{
+    height: 100px;
+    width: 300px;
+    border-radius: 5px;
+    resize: none;
+    font-size: 1.25em;
+    font-style: italic;
+    font: green;
+    font-weight: 550;
+    background: #9acbe3;
+}
+
+.duedate-priority{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
 }

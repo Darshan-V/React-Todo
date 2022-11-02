@@ -34,10 +34,32 @@ function TodoList() {
     setTodos(updatedTodos);
   };
 
+  const updatePriority = (event, index, id) => {
+    todos[index].priority = event.target.value;
+    setTodos([...todos]);
+  };
+
+  const updateDueDate = (event, index, id) => {
+    todos[index].duedate = event.target.value;
+    setTodos([...todos]);
+  };
+
+  const addAndUpdateNotes = (event, index, id) => {
+    todos[index].notes = event.target.value;
+    setTodos([...todos]);
+  };
+
   return (
     <>
       <TodoForm onSubmit={addTodo} />
-      <Todo todos={todos} completeTodo={completeTodo} removeTodo={removeTodo} />
+      <Todo
+        todos={todos}
+        completeTodo={completeTodo}
+        removeTodo={removeTodo}
+        addAndUpdateNotes={addAndUpdateNotes}
+        updatePriority={updatePriority}
+        updateDueDate={updateDueDate}
+      />
     </>
   );
 }

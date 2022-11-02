@@ -1,7 +1,14 @@
 import React, { useState } from "react";
 import "./Todo.css";
 
-const Todo = ({ todos, completeTodo, removeTodo }) => {
+const Todo = ({
+  todos,
+  completeTodo,
+  removeTodo,
+  updatePriority,
+  updateDueDate,
+  addAndUpdateNotes,
+}) => {
   const [edit, setEdit] = useState({
     value: "",
     id: "",
@@ -22,28 +29,36 @@ const Todo = ({ todos, completeTodo, removeTodo }) => {
         </span>
 
         {todo.text}
-        <div className="button">
-          <button onClick={() => removeTodo(todo.id)} className="delete-icon">
-            Remove
-          </button>
-        </div>
       </div>
       <div className="secondary-content">
         <div className="description">
-          <textarea className="todo-notes" placeholder="Description"></textarea>
+          <textarea
+            className="todo-notes"
+            placeholder="Description..."
+            onChange={(e) => addAndUpdateNotes(e, index, todo.id)}
+            value={todo.notes}
+          ></textarea>
         </div>
         <div className="duedate-priority">
-          <input type="date" className="due-date"></input>
+          <input
+            type="date"
+            className="due-date"
+            onChange={(e) => updateDueDate(e, index, todo.id)}
+            value={todo.dueDate}
+          ></input>
           <select
             className="priority"
-            name={todo.priority}
             value={todo.priority}
+            onChange={(e) => updatePriority(e, index, todo.id)}
           >
-            <option value="None">None</option>
-            <option value="Low">Low</option>
-            <option value="Medium">Medium</option>
-            <option value="High">High</option>
+            <option value="0">None</option>
+            <option value="1">Low</option>
+            <option value="2">Medium</option>
+            <option value="3">High</option>
           </select>
+          <button onClick={() => removeTodo(todo.id)} className="delete-icon">
+            Remove
+          </button>
         </div>
       </div>
     </div>

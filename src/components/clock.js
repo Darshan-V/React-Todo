@@ -23,14 +23,14 @@ function Clock() {
       if (hour === 0) {
         hour = 12;
       }
-      console.log(hour);
       return hour;
     }
     const hour = document.getElementById("hr");
     const mn = document.getElementById("mn");
     const sc = document.getElementById("sc");
 
-    hour.style.transform = `rotate(${hr * 60 + min * 0.05 - 180}deg)`;
+    //prettier-ignore
+    hour.style.transform = `rotate(${((hr / 12 ) * 360) + ((min/60)*30) + 360}deg)`;
     mn.style.transform = `rotate(${min * 6}deg)`;
     sc.style.transform = `rotate(${sec * 6}deg)`;
 
