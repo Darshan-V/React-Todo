@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./Todo.css";
-
+//rename
 const Todo = ({
   todos,
   completeTodo,
@@ -8,29 +8,37 @@ const Todo = ({
   updatePriority,
   updateDueDate,
   addAndUpdateNotes,
+  showAndHideMore,
 }) => {
-  const [edit, setEdit] = useState({
-    value: "",
-    id: "",
-  });
-
   return todos.map((todo, index) => (
-    <div className={"task"} id={todo.id} key={index}>
+    <div
+      className={"task"}
+      id={todo.id}
+      key={todo.id}
+      style={{ borderLeft: todo.borderColor }}
+    >
       <div className="primary-content">
         <span>
-          <div>
+          <div className="task-title">
             <input
               type="checkbox"
               id={todo.id}
-              status={todo.status}
               onClick={() => completeTodo(todo.id)}
+              checked={todo.status}
             ></input>
           </div>
         </span>
-
-        {todo.text}
+        {todo.title}
+        <div
+          className="accordian"
+          style={{ width: "100%" }}
+          onClick={(e) => showAndHideMore(e, index)}
+        ></div>
       </div>
-      <div className="secondary-content">
+      <div
+        className="secondary-content"
+        style={{ display: todo.showHide ? "flex" : "none" }}
+      >
         <div className="description">
           <textarea
             className="todo-notes"

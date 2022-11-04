@@ -28,7 +28,6 @@ function Clock() {
     const hour = document.getElementById("hr");
     const mn = document.getElementById("mn");
     const sc = document.getElementById("sc");
-
     //prettier-ignore
     hour.style.transform = `rotate(${((hr / 12 ) * 360) + ((min/60)*30) + 360}deg)`;
     mn.style.transform = `rotate(${min * 6}deg)`;

@@ -2,6 +2,7 @@
     border-bottom: 10px;
     border-style: groove;
     border-radius: 5px;
+    max-height: 100vh;
 
 }
 .primary-content{
@@ -16,6 +17,7 @@
     border-radius: 5px;
     background-color: #2d5f78;
 }
+
 .secondary-content{
     display: flex;
     flex-direction: row;
@@ -44,3 +46,22 @@
     flex-direction: column;
     justify-content: space-around;
 }
+
+.delete-icon {
+    font-size: 1em;
+    font-style: bold ;
+    border-radius: 6px;
+    justify-content:center;
+    cursor: pointer;
+    box-shadow: 0 -15px 15px #477f9c,
+    inset 0 -15px 15px #477f9c,
+    0 15px 15px #2d5f78,
+    inset 0 -15px 15px #2d5f78
+}
+.delete-icon:hover{
+    box-shadow: 0 -5px 5px red,
+    inset 0 -15px 15px crimson,
+    0 5px 5px red,
+    inset 0 -15px 15px crimson
+}
+

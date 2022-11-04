@@ -5,12 +5,17 @@ import { v4 as uuidv4 } from "uuid";
 function TodoForm(props) {
   const [value, setValue] = useState("");
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  const handleSubmit = (event) => {
+    event.preventDefault(); //learn about this
 
     props.onSubmit({
       id: uuidv4(),
-      text: value,
+      title: value,
+      status: false,
+      duedate: "",
+      priority: "",
+      notes: "",
+      showHide: "",
     });
     setValue("");
   };
