@@ -1,6 +1,6 @@
 import express from "express";
 import cors from "cors";
-import todoRouter from "./router.js";
+import router from "./router.js";
 const app = express();
 
 const port = 8000;
@@ -13,7 +13,7 @@ app.use(
   })
 );
 
-app.use(todoRouter);
+app.use(router);
 
 app.listen(port, () => {
   console.log(`listening on port ${port}`);

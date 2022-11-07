@@ -7,7 +7,7 @@
     "dev": "parcel ./client/src/index.html",
     "format": "prettier --write \"src/**/*.{js,jsx}\"",
     "lint": "eslint \"src/**/*.{js,jsx}\" --quiet",
-    "serve": "node ./server/server.js"
+    "serve": "nodemon ./server/server.js"
   },
   "keywords": [],
   "author": "",
@@ -37,6 +37,7 @@
   "dependencies": {
     "cors": "^2.8.5",
     "express": "^4.18.2",
+    "nodemon": "^2.0.20",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "redis": "^4.4.0",

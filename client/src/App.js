@@ -5,10 +5,12 @@ import "./App.css";
 
 function App() {
   return (
-    <div className="todo-app">
-      <TodoList />
+    <>
       <Clock />
-    </div>
+      <div className="todo-app">
+        <TodoList />
+      </div>
+    </>
   );
 }
 
