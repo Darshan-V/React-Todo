@@ -1,78 +1,127 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import TodoForm from "./Form";
 import Todo from "./Todo";
 import Footer from "./Footer";
+import {
+  getAll,
+  addTodo,
+  updateTodo,
+  deleteAll,
+  deleteDone,
+  deleteTodo,
+} from "../fetchapi";
 
 function TodoList() {
   const [todos, setTodos] = useState([]);
-  // console.log(todos);
 
-  const addTodo = (todo) => {
+  useEffect(() => {
+    (async function () {
+      const allTodos = await getAll();
+      const parsedTodos = allTodos.map((todo) => ({
+        ...todo,
+        completed: JSON.parse(todo.completed),
+        priorityBorder: todo.priority,
+      }));
+      setTodos(parsedTodos);
+    })();
+  }, []);
+
+  const insertTodo = (todo) => {
     if (!todo.title || /^\s*$/.test(todo.title)) {
       return;
     }
 
     const newTodos = [todo, ...todos];
-
+    addTodo(todo);
     setTodos(newTodos);
   };
 
   const removeTodo = (id) => {
     const removedArr = [...todos].filter((todo) => todo.id !== id);
+    deleteTodo(id);
     setTodos(removedArr);
   };
 
-  const completeTodo = (id) => {
-    //rename
+  const completeTodo = (id, event) => {
     let updatedTodos = todos.map((todo) => {
       if (todo.id === id) {
-        todo.status = !todo.status;
+        todo.completed = !todo.completed;
       }
       console.log(todo);
+      updateTodo(todo.id, "completed", todo.completed);
       return todo;
     });
+
     setTodos(updatedTodos);
+  };
+
+  const editTitle = (event, index, id) => {
+    todos[index].title = event.target.value;
+    updateTodo(id, "title", event.target.value);
+    setTodos([...todos]);
   };
 
   const updatePriority = (event, index, id) => {
     todos[index].priority = event.target.value;
     priorityBorder(event.target.value, index, id);
+    updateTodo(id, "priority", event.target.value);
     setTodos([...todos]);
   };
 
   const updateDueDate = (event, index, id) => {
     todos[index].duedate = event.target.value;
+    updateTodo(id, "duedate", event.target.value);
     setTodos([...todos]);
   };
 
   const addAndUpdateNotes = (event, index, id) => {
     todos[index].notes = event.target.value;
+    updateTodo(id, "notes", event.target.value);
     setTodos([...todos]);
   };
 
-  const deleteAll = () => {
+  const removeAll = () => {
+    deleteAll();
     setTodos([]);
   };
 
   const deleteDoneTasks = () => {
-    const activeTodos = todos.filter((todo) => todo.status === false);
+    const activeTodos = todos.filter((todo) => {
+      if (todo.completed === false) return todo.id;
+    });
+
+    const inActiveTodos = todos.filter((todo) => {
+      if (todo.completed === true) {
+        return todo.id;
+      }
+    });
+    const inActiveID = inActiveTodos.map((todo) => {
+      return todo.id;
+    });
+    console.log(inActiveID);
+    deleteDone(inActiveID);
+
     setTodos(activeTodos);
   };
 
-  const showAndHideMore = (event, index) => {
-    todos[index].showHide = !todos[index].showHide;
+  const showAndHideMore = (event, id) => {
+    todos[id].showHide = !todos[id].showHide;
     setTodos([...todos]);
   };
 
-  // let showDone = false;
-  // const showDoneTasks = (event) => {
-  //   if (showDone) {
-  //     setTodos(todos.concat(todos.filter((todo) => todo.status)));
-  //   } else {
-  //     setTodos(todos.filter((task) => !task.done));
-  //   }
-  //   showDone = !showDone;
-  // };
+  const showDoneTasks = () => {
+    todos.map((todo) => {
+      if (todo.completed === true) {
+        const task = document.getElementById(`${todo.id}`);
+        task.style.display = "none";
+      }
+      if (todo.completed === false) {
+        const task = document.getElementById(`${todo.id}`);
+
+        task.style.display = "flex";
+      }
+    });
+  };
 
   const priorityBorder = (value, index) => {
     const borderType = "solid 5px ";
@@ -92,17 +141,18 @@ function TodoList() {
         completeTodo={completeTodo}
         removeTodo={removeTodo}
         showAndHideMore={showAndHideMore}
+        editTitle={editTitle}
         addAndUpdateNotes={addAndUpdateNotes}
         updatePriority={updatePriority}
         updateDueDate={updateDueDate}
       />
-      <TodoForm onSubmit={addTodo} />
+      <TodoForm onSubmit={insertTodo} />
 
       <Footer
         todos={todos}
         deleteDoneTasks={deleteDoneTasks}
-        deleteAll={deleteAll}
-        // showDoneTasks={showDoneTasks}
+        removeAll={removeAll}
+        showDoneTasks={showDoneTasks}
       />
     </>
   );

@@ -1,0 +1,69 @@
+.footer{
+    cursor: pointer;
+    width: 604px;
+    flex-direction: row;
+    display: flex;
+    align-content: stretch;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.deleteAll{
+    font-size: 1.25em;
+    font-style: bold ;
+    border-radius: 6px;
+    width: 150px;
+    justify-content:center;
+    cursor: pointer;
+    box-shadow: 0 -15px 15px #091921,
+    inset 0 -15px 15px #477f9c,
+    0 15px 15px #091921,
+    inset 0 -15px 15px #091921
+}
+
+.deleteAll:hover{
+    box-shadow: 0 -5px 5px red,
+    inset 0 -15px 15px crimson,
+    0 5px 5px red,
+    inset 0 -15px 15px crimson
+}
+
+.deleteDone{
+    font-size: 1.25em;
+    font-style: bold ;
+    border-radius: 6px;
+    width: 150px;
+    justify-content:center;
+    cursor: pointer;
+    box-shadow: 0 -15px 15px #091921,
+    inset 0 -15px 15px #477f9c,
+    0 15px 15px #091921,
+    inset 0 -15px 15px #091921
+}
+
+.deleteDone:hover{
+    box-shadow: 0 -5px 5px greenyellow,
+    inset 0 -15px 15px green,
+    0 5px 5px greenyellow,
+    inset 0 -15px 15px green
+}
+
+.filterTodos{
+    font-size: 1.25em;
+    font-style: bold ;
+    border-radius: 6px;
+    width: 150px;
+    justify-content:center;
+    cursor: pointer;
+    box-shadow: 0 -15px 15px #091921,
+    inset 0 -15px 15px #477f9c,
+    0 15px 15px #091921,
+    inset 0 -15px 15px #091921
+}
+
+.filterTodos:hover{
+    box-shadow: 0 -5px 5px blueviolet,
+    inset 0 -15px 15px blueviolet,
+    0 5px 5px blue,
+    inset 0 -15px 15px blueviolet
+}

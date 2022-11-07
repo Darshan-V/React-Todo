@@ -18,6 +18,12 @@
     background-color: #2d5f78;
 }
 
+input.todoHead{
+    background-color: #2d5f78;
+    border: none;
+    font-size: 1.25em;
+}
+
 .secondary-content{
     display: flex;
     flex-direction: row;

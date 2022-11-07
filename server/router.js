@@ -46,21 +46,20 @@ router.delete("/", async (req, res) => {
   }
 });
 
-router.delete("/:key", async (req, res) => {
+router.delete("/:id", async (req, res) => {
   try {
-    const { key } = req.params;
-    await deleteTodo(key);
-    res.json(key);
+    const { id } = req.params;
+    await deleteTodo(id);
+    res.json(id);
   } catch (err) {
     console.error(err);
   }
 });
 
-router.delete("/status", async (req, res) => {
+router.delete("/todo/done", async (req, res) => {
   try {
     await deleteDone(req.body);
-    console.log(req.body);
-    res.json(req.body);
+    res.json("deleting done tasks");
   } catch (err) {
     console.error(err);
   }

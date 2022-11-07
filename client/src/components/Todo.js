@@ -6,6 +6,7 @@ const Todo = ({
   completeTodo,
   removeTodo,
   updatePriority,
+  editTitle,
   updateDueDate,
   addAndUpdateNotes,
   showAndHideMore,
@@ -15,6 +16,7 @@ const Todo = ({
       className={"task"}
       id={todo.id}
       key={todo.id}
+      completed={`${todo.completed}`}
       style={{ borderLeft: todo.borderColor }}
     >
       <div className="primary-content">
@@ -23,20 +25,31 @@ const Todo = ({
             <input
               type="checkbox"
               id={todo.id}
-              onClick={() => completeTodo(todo.id)}
-              checked={todo.status}
+              key={todo.id}
+              onChange={() => completeTodo(todo.id)}
+              checked={todo.completed}
             ></input>
           </div>
         </span>
-        {todo.title}
+        <div className="todoHeadContainer">
+          <input
+            className="todoHead"
+            value={todo.title}
+            onChange={(e) => {
+              editTitle(e, index, todo.id);
+            }}
+          />
+        </div>
         <div
           className="accordian"
           style={{ width: "100%" }}
+          key={todo.id}
           onClick={(e) => showAndHideMore(e, index)}
         ></div>
       </div>
       <div
         className="secondary-content"
+        key={todo.id}
         style={{ display: todo.showHide ? "flex" : "none" }}
       >
         <div className="description">
@@ -47,7 +60,7 @@ const Todo = ({
             value={todo.notes}
           ></textarea>
         </div>
-        <div className="duedate-priority">
+        <div className="duedate-priority" key={todo.id}>
           <input
             type="date"
             className="due-date"
@@ -64,7 +77,11 @@ const Todo = ({
             <option value="2">Medium</option>
             <option value="3">High</option>
           </select>
-          <button onClick={() => removeTodo(todo.id)} className="delete-icon">
+          <button
+            onClick={() => removeTodo(todo.id)}
+            key={todo.id}
+            className="delete-icon"
+          >
             Remove
           </button>
         </div>

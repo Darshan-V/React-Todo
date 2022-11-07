@@ -9,9 +9,9 @@ function TodoForm(props) {
     event.preventDefault(); //learn about this
 
     props.onSubmit({
-      id: uuidv4(),
+      id: "",
       title: value,
-      status: false,
+      completed: false,
       duedate: "",
       priority: "",
       notes: "",
