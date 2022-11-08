@@ -8,6 +8,14 @@
     margin-top: 15px;
     background-color: rgb(252, 245, 201);
 }
+
+.todo-form:hover{
+    box-shadow: 0 -5px 5px steelblue,
+    inset 0 -15px 15px slateblue,
+    0 5px 5px steelblue,
+    inset 0 -15px 15px slateblue
+}
+
 .todo-input{
     width: 100%;
     font-size: 1em;

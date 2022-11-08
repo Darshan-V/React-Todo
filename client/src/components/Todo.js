@@ -23,6 +23,7 @@ const Todo = ({
         <span>
           <div className="task-title">
             <input
+              className="todo_checkbox"
               type="checkbox"
               id={todo.id}
               key={todo.id}

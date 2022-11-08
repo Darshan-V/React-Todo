@@ -71,3 +71,14 @@ input.todoHead{
     inset 0 -15px 15px crimson
 }
 
+.task[completed=true] .primary-content {
+    background-color: #1e313a;
+    
+}
+.task[completed=true] .todoHead{
+    background-color: #1e313a;
+}
+
+.task[completed=true] .todoHead{
+    text-decoration: line-through;
+}
